@@ -1,0 +1,67 @@
+{
+  "name": "codetimemachine-vscode",
+  "displayName": "CodeTimeMachine",
+  "description": "VS Code extension for CodeTimeMachine - captures edit events for session replay",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codetimemachine.start",
+        "title": "Start Recording",
+        "category": "CodeTimeMachine"
+      },
+      {
+        "command": "codetimemachine.stop",
+        "title": "Stop Recording",
+        "category": "CodeTimeMachine"
+      },
+      {
+        "command": "codetimemachine.status",
+        "title": "Show Status",
+        "category": "CodeTimeMachine"
+      }
+    ],
+    "configuration": {
+      "title": "CodeTimeMachine",
+      "properties": {
+        "codetimemachine.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable CodeTimeMachine recording"
+        },
+        "codetimemachine.maxFileSize": {
+          "type": "number",
+          "default": 100000,
+          "description": "Maximum file size to record (bytes)"
+        },
+        "codetimemachine.debounceMs": {
+          "type": "number",
+          "default": 500,
+          "description": "Debounce time for file changes (ms)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4",
+    "vsce": "^2.15.0"
+  }
+}
